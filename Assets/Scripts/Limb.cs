@@ -26,7 +26,7 @@ public class Limb : MonoBehaviour {
     private void IKSolver() {
 
         Vector3 startToGoal = _limbEnd.transform.position - _limbSegments.Last().transform.position;
-        Vector3 startToEndEffector = 
+        //Vector3 startToEndEffector = 
 
         for (int i = _limbSegments.Length - 1; i >= 0; i--) { 
             
