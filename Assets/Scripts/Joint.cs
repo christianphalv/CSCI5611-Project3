@@ -10,7 +10,7 @@ public class Joint : MonoBehaviour {
 
 
     void Start() {
-        _length = 1.2f;
+        _length = 1.2f; //same length between all joints atm
     }
 
     void Update() {

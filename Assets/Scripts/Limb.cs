@@ -19,18 +19,17 @@ public class Limb : MonoBehaviour {
     }
 
     void Update() {
+        fk();
         IKSolver();
     }
 
-    private void OnDrawGizmos() {
-        for (int i = 0; i < _joints.Length; i++) {
-            //Gizmos.DrawSphere(_joints[i].getEndPoint(), 0.2f);
-        }
-    }
+    // private void OnDrawGizmos() {
+    //     for (int i = 0; i < _joints.Length; i++) {
+    //         //Gizmos.DrawSphere(_joints[i].getEndPoint(), 0.2f);
+    //     }
+    // }
 
     private void IKSolver() {
-
-
         for (int i = _joints.Length - 1; i >= 0; i--) {
 
             // Initialize goal and effector vectors
@@ -38,8 +37,11 @@ public class Limb : MonoBehaviour {
             Vector3 startToGoal = (_limbGoal.transform.position - start).normalized;
             Vector3 startToEndEffector = (_joints.Last().getEndPoint() - start).normalized;
 
-            // Rotate joint toward goal
-            _joints[i].transform.rotation = Quaternion.LookRotation(startToGoal, startToEndEffector);
+            Quaternion fromToRotation = Quaternion.FromToRotation(startToEndEffector, startToGoal);
+            Quaternion newRotation = fromToRotation * _joints[i].transform.rotation;
+
+            _joints[i].transform.rotation = newRotation;
+
 
             fk();
         }
@@ -48,11 +50,13 @@ public class Limb : MonoBehaviour {
     private void fk() {
 
         for (int i = 0; i < _joints.Length - 1; i++) {
-            _joints[i + 1].transform.position = _joints[i].getEndPoint();
+            _joints[i + 1].transform.position = _joints[i].getEndPoint();//find the end of the bone
         }
     }
 
-
-
-
+    float clamp(float f, float min, float max){
+        if (f < min) return min;
+        if (f > max) return max;
+        return f;
+    }
 }
