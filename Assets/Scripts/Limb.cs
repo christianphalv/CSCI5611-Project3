@@ -14,20 +14,16 @@ public class Limb : MonoBehaviour {
 
         // Initialize limb components
         _joints = GetComponentsInChildren<Joint>();
-        Array.Sort(_joints, new Comparison<Joint>((x, y) => x._orderNumber.CompareTo(y._orderNumber)));
         _limbGoal = GetComponentInChildren<LimbGoal>();
+
+        // Sort joints by order defined in editor
+        Array.Sort(_joints, new Comparison<Joint>((x, y) => x._orderNumber.CompareTo(y._orderNumber)));
     }
 
     void Update() {
         fk();
         IKSolver();
     }
-
-    // private void OnDrawGizmos() {
-    //     for (int i = 0; i < _joints.Length; i++) {
-    //         //Gizmos.DrawSphere(_joints[i].getEndPoint(), 0.2f);
-    //     }
-    // }
 
     private void IKSolver() {
         for (int i = _joints.Length - 1; i >= 0; i--) {
@@ -37,26 +33,23 @@ public class Limb : MonoBehaviour {
             Vector3 startToGoal = (_limbGoal.transform.position - start).normalized;
             Vector3 startToEndEffector = (_joints.Last().getEndPoint() - start).normalized;
 
+            // Calculate rotation
             Quaternion fromToRotation = Quaternion.FromToRotation(startToEndEffector, startToGoal);
             Quaternion newRotation = fromToRotation * _joints[i].transform.rotation;
 
+            // Update joint rotation
             _joints[i].transform.rotation = newRotation;
 
-
+            // Update joint positions
             fk();
         }
     }
 
     private void fk() {
 
+        // Update joint positions to be at the end of the previous segment
         for (int i = 0; i < _joints.Length - 1; i++) {
-            _joints[i + 1].transform.position = _joints[i].getEndPoint();//find the end of the bone
+            _joints[i + 1].transform.position = _joints[i].getEndPoint();
         }
-    }
-
-    float clamp(float f, float min, float max){
-        if (f < min) return min;
-        if (f > max) return max;
-        return f;
     }
 }
