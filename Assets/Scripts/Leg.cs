@@ -84,11 +84,20 @@ public class Leg : MonoBehaviour {
     }
 
     public void ReverseJoints(){//FIX this function
+        Vector3[] positions = new Vector3[_joints.Length];
+        for(int i = 0; i < _joints.Length-1; i++){
+            positions[i] = _joints[i].getEndPoint();
+        }
+        Array.Reverse(_joints);
         for(int i = 0; i < _joints.Length; i++){
             _joints[i].Flip();
         }
-        Array.Reverse(_joints);
-        _joints[_joints.Length-1].SetJointByEndPoint(_limbGoalGO.transform.position);
+        
+        for(int i = 0; i < _joints.Length-1; i++){
+            _joints[i].transform.position = positions[i];
+        }
+
+        //_joints[_joints.Length-1].SetJointByEndPoint(_limbGoalGO.transform.position);
         fk();
     }
     public void SetLimbGoal(Vector3 position){
