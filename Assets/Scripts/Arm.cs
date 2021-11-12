@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Arm : MonoBehaviour {
 
-    protected Joint[] _joints;
-    protected LimbGoal _limbGoal;
-    protected float _speed;
-    protected float _angleLimit;
+    private Joint[] _joints;
+    private LimbGoal _limbGoal;
+    [SerializeField] private GameObject _limbGoalGO;
+    private float _speed;
+    private float _angleLimit;
 
 
     void Start() {
 
         // Initialize limb components
         _joints = GetComponentsInChildren<Joint>();
-        _limbGoal = GetComponentInChildren<LimbGoal>();
+        _limbGoal = _limbGoalGO.GetComponent<LimbGoal>();
+        //_limbGoal = GetComponentInChildren<LimbGoal>();
         _speed = 100f;
         _angleLimit = 90f;
 
@@ -34,7 +36,7 @@ public class Arm : MonoBehaviour {
 
             // Initialize goal and effector vectors
             Vector3 start = _joints[i].transform.position;
-            Vector3 startToGoal = (_limbGoal.transform.position - start).normalized;
+            Vector3 startToGoal = (_limbGoalGO.transform.position - start).normalized;
             Vector3 startToEndEffector = (_joints.Last().getEndPoint() - start).normalized;
 
             // Calculate rotation
@@ -76,5 +78,20 @@ public class Arm : MonoBehaviour {
         }
 
         return rotation;
+    }
+
+    public Vector3 GetLimbEndPosition(){
+        return _joints[_joints.Length-1].getEndPoint();
+    }
+
+    public void ReverseJoints(){//FIX this function
+        Array.Reverse(_joints);
+    }
+    public void SetLimbGoal(Vector3 position){
+        _limbGoalGO.transform.position = position;
+    }
+
+    public Vector3 GetLimbGoal(){
+        return _limbGoalGO.transform.position;
     }
 }
