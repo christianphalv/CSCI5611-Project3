@@ -6,7 +6,6 @@ public class Leg : MonoBehaviour {
 
     protected Joint[] _joints;
     protected LimbGoal _limbGoal;
-    [SerializeField] private GameObject _limbGoalGO;
     protected float _speed;
     protected float _angleLimit;
 
@@ -35,7 +34,7 @@ public class Leg : MonoBehaviour {
 
             // Initialize goal and effector vectors
             Vector3 start = _joints[i].transform.position;
-            Vector3 startToGoal = (_limbGoalGO.transform.position - start).normalized;
+            Vector3 startToGoal = (_limbGoal.transform.position - start).normalized;
             Vector3 startToEndEffector = (_joints.Last().getEndPoint() - start).normalized;
 
             // Calculate rotation
@@ -80,20 +79,5 @@ public class Leg : MonoBehaviour {
         }
 
         return rotation;
-    }
-
-     public Vector3 GetLimbEndPosition(){
-        return _joints[_joints.Length-1].getEndPoint();
-    }
-
-    public void ReverseJoints(){//FIX this function
-        Array.Reverse(_joints);
-    }
-    public void SetLimbGoal(Vector3 position){
-        _limbGoalGO.transform.position = position;
-    }
-
-    public Vector3 GetLimbGoal(){
-        return _limbGoalGO.transform.position;
     }
 }
