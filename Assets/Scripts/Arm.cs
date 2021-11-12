@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Arm : MonoBehaviour {
 
-public class Limb : MonoBehaviour {
-
     private Joint[] _joints;
     private LimbGoal _limbGoal;
     [SerializeField] private GameObject _limbGoalGO;
@@ -96,5 +94,4 @@ public class Limb : MonoBehaviour {
     public Vector3 GetLimbGoal(){
         return _limbGoalGO.transform.position;
     }
-}
 }
