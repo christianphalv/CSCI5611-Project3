@@ -32,7 +32,7 @@ public class Leg : MonoBehaviour {
     
     private void IKSolver() {
 
-             for (int i = _joints.Length - 1; i >= 0; i--) {
+        for (int i = _joints.Length - 1; i >= 0; i--) {
 
             // Initialize goal and effector vectors
             Vector3 start = _joints[i].transform.position;
