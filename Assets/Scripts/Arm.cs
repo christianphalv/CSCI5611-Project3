@@ -6,6 +6,8 @@ public class Arm : MonoBehaviour {
 
     protected Joint[] _joints;
     protected LimbGoal _limbGoal;
+     [SerializeField] private GameObject _limbGoalGO;
+    
     protected float _speed;
     protected float _angleLimit;
 
@@ -76,5 +78,20 @@ public class Arm : MonoBehaviour {
         }
 
         return rotation;
+    }
+
+     public Vector3 GetLimbEndPosition(){
+        return _joints[_joints.Length-1].getEndPoint();
+    }
+
+    public void ReverseJoints(){//FIX this function
+        Array.Reverse(_joints);
+    }
+    public void SetLimbGoal(Vector3 position){
+        _limbGoalGO.transform.position = position;
+    }
+
+    public Vector3 GetLimbGoal(){
+        return _limbGoalGO.transform.position;
     }
 }

@@ -6,6 +6,8 @@ public class Leg : MonoBehaviour {
 
     protected Joint[] _joints;
     protected LimbGoal _limbGoal;
+     [SerializeField] private GameObject _limbGoalGO;
+    
     protected float _speed;
     protected float _angleLimit;
 
@@ -28,7 +30,7 @@ public class Leg : MonoBehaviour {
     }
 
 
-    // THIS NEEDS TO BE EDITED TO BE THE LEG
+    
     private void IKSolver() {
         for (int i = _joints.Length - 1; i >= 0; i--) {
 
@@ -45,23 +47,20 @@ public class Leg : MonoBehaviour {
             newRotation = Quaternion.RotateTowards(_joints[i].transform.rotation, newRotation, _speed * Time.deltaTime);
 
             // Limit rotation angle
-            if (i > 0)
-            {
+            if (i > 0) {
                 newRotation = limitedRotationAngle(newRotation, _joints[i - 1].transform.rotation, _angleLimit);
-            }
-            else if (i == 0)
-            {
+            } else if (i == 0) { 
                 newRotation = limitedRotationAngle(newRotation, this.transform.rotation, _angleLimit);
             }
 
             // Update joint rotation
-            _joints[i].transform.rotation = newRotation;
+           _joints[i].transform.rotation = newRotation;
 
             // Update joint positions
             fk();
         }
     }
-
+    
 
     protected void fk() {
 
@@ -79,5 +78,20 @@ public class Leg : MonoBehaviour {
         }
 
         return rotation;
+    }
+
+     public Vector3 GetLimbEndPosition(){
+        return _joints[_joints.Length-1].getEndPoint();
+    }
+
+    public void ReverseJoints(){//FIX this function
+        Array.Reverse(_joints);
+    }
+    public void SetLimbGoal(Vector3 position){
+        _limbGoalGO.transform.position = position;
+    }
+
+    public Vector3 GetLimbGoal(){
+        return _limbGoalGO.transform.position;
     }
 }

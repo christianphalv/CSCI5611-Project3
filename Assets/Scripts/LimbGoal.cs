@@ -12,4 +12,8 @@ public class LimbGoal : MonoBehaviour {
     void Update() {
         
     }
+
+     public void SetNewPosition(Vector3 newposition){
+        gameObject.transform.position = newposition;
+    }
 }
