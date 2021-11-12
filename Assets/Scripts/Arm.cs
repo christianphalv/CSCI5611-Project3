@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Limb : MonoBehaviour {
+public class Arm : MonoBehaviour {
 
-    private Joint[] _joints;
-    private LimbGoal _limbGoal;
-    private float _speed;
-    private float _angleLimit;
+    protected Joint[] _joints;
+    protected LimbGoal _limbGoal;
+    protected float _speed;
+    protected float _angleLimit;
 
 
     void Start() {
@@ -29,6 +29,8 @@ public class Limb : MonoBehaviour {
         IKSolver();
     }
 
+
+    
     private void IKSolver() {
         for (int i = _joints.Length - 1; i >= 0; i--) {
 
@@ -58,8 +60,9 @@ public class Limb : MonoBehaviour {
             fk();
         }
     }
+    
 
-    private void fk() {
+    protected void fk() {
 
         // Update joint positions to be at the end of the previous segment
         for (int i = 0; i < _joints.Length - 1; i++) {
@@ -67,7 +70,7 @@ public class Limb : MonoBehaviour {
         }
     }
 
-    private Quaternion limitedRotationAngle(Quaternion rotation, Quaternion connectedJoint, float maxAngle) {
+    protected Quaternion limitedRotationAngle(Quaternion rotation, Quaternion connectedJoint, float maxAngle) {
 
         // Corrects rotation if greater than maximum angle
         if (Quaternion.Angle(rotation, connectedJoint) > maxAngle) {
