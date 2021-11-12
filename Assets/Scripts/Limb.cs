@@ -8,6 +8,7 @@ public class Limb : MonoBehaviour {
 
     private Joint[] _joints;
     private LimbGoal _limbGoal;
+    private float _speed;
 
 
     void Start() {
@@ -15,6 +16,7 @@ public class Limb : MonoBehaviour {
         // Initialize limb components
         _joints = GetComponentsInChildren<Joint>();
         _limbGoal = GetComponentInChildren<LimbGoal>();
+        _speed = 10f;
 
         // Sort joints by order defined in editor
         Array.Sort(_joints, new Comparison<Joint>((x, y) => x._orderNumber.CompareTo(y._orderNumber)));
@@ -37,6 +39,15 @@ public class Limb : MonoBehaviour {
             Quaternion fromToRotation = Quaternion.FromToRotation(startToEndEffector, startToGoal);
             Quaternion newRotation = fromToRotation * _joints[i].transform.rotation;
 
+            // Slow rotation (Works kinda)
+            //newRotation = Quaternion.LerpUnclamped(_joints[i].transform.rotation, newRotation, _speed * Time.deltaTime);
+
+            // Limit rotation angle
+            if (i > 0) {
+                limitedRotationAngle(newRotation, _joints[i - 1].transform.rotation, 90f);
+            }
+
+
             // Update joint rotation
             _joints[i].transform.rotation = newRotation;
 
@@ -51,5 +62,15 @@ public class Limb : MonoBehaviour {
         for (int i = 0; i < _joints.Length - 1; i++) {
             _joints[i + 1].transform.position = _joints[i].getEndPoint();
         }
+    }
+
+    private Quaternion limitedRotationAngle(Quaternion rotation, Quaternion connectedJoint, float maxAngle) {
+
+        // Corrects rotation if greater than maximum angle
+        if (Quaternion.Angle(rotation, connectedJoint) > maxAngle) {
+            Debug.Log(Quaternion.Angle(rotation, connectedJoint)); // Not finished
+        }
+
+        return rotation;
     }
 }
