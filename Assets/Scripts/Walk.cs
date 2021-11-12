@@ -24,9 +24,13 @@ public class Walk : MonoBehaviour
     {
         for(int i = 0; i < _legs.Length; i++){
             if(Vector3.Distance(_legs[i].GetLimbEndPosition(),_legs[i].GetLimbGoal()) < 0.01f && !_limbUp){
-                //_legs[i].ReverseJoints();//need to fix this function to change the root
+                //_legs[i].SetLimbGoal(_legs[i].GetLimbEndPosition() + Vector3.left);
+                Vector3 currentRoot = _legs[i].transform.position;
+                _legs[i].SetLimbGoal(currentRoot);
+                _legs[i].ReverseJoints();//need to fix this function to change the root
+                
                 _limbUp = true;
-                _legs[i].SetLimbGoal(_legs[i].GetLimbEndPosition() + Vector3.left);
+                
             }
         }
         

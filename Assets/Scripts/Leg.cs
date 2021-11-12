@@ -11,7 +11,6 @@ public class Leg : MonoBehaviour {
     protected float _speed;
     protected float _angleLimit;
 
-
     void Start() {
 
         // Initialize limb components
@@ -32,7 +31,8 @@ public class Leg : MonoBehaviour {
 
     
     private void IKSolver() {
-        for (int i = _joints.Length - 1; i >= 0; i--) {
+
+             for (int i = _joints.Length - 1; i >= 0; i--) {
 
             // Initialize goal and effector vectors
             Vector3 start = _joints[i].transform.position;
@@ -59,15 +59,14 @@ public class Leg : MonoBehaviour {
             // Update joint positions
             fk();
         }
+       
     }
     
 
     protected void fk() {
-
-        // Update joint positions to be at the end of the previous segment
-        for (int i = 0; i < _joints.Length - 1; i++) {
-            _joints[i + 1].transform.position = _joints[i].getEndPoint();
-        }
+            for (int i = 0; i < _joints.Length - 1; i++) {
+                _joints[i + 1].transform.position = _joints[i].getEndPoint();
+            }   
     }
 
     protected Quaternion limitedRotationAngle(Quaternion rotation, Quaternion connectedJoint, float maxAngle) {
@@ -85,7 +84,12 @@ public class Leg : MonoBehaviour {
     }
 
     public void ReverseJoints(){//FIX this function
+        for(int i = 0; i < _joints.Length; i++){
+            _joints[i].Flip();
+        }
         Array.Reverse(_joints);
+        _joints[_joints.Length-1].SetJointByEndPoint(_limbGoalGO.transform.position);
+        fk();
     }
     public void SetLimbGoal(Vector3 position){
         _limbGoalGO.transform.position = position;
