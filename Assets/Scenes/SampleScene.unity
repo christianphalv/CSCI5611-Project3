@@ -232,9 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeef89456b2200c4db78ba136d1dbfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _limbs:
-  - {fileID: 1112205209}
-  - {fileID: 1923787753}
+  _legs:
+  - {fileID: 9124281080025494787}
+  - {fileID: 1225331830}
 --- !u!1 &490070231
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,17 +511,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 196.167, z: 0}
---- !u!114 &1112205209 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9124281079084465146, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
-  m_PrefabInstance: {fileID: 9124281080025494785}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f42cfce144f3d24eaf219152a39bc11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1160390168 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9124281079858505011, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
@@ -536,7 +525,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9124281079084465144, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
       propertyPath: m_Name
-      value: LimbRoot (1)
+      value: Leg2
       objectReference: {fileID: 0}
     - target: {fileID: 9124281079084465146, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
       propertyPath: _limbGoalGO
@@ -594,19 +583,27 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 3.13
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9124281079084465146, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
---- !u!114 &1923787753 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9124281079084465146, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
+--- !u!1 &1225331829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9124281079084465144, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
   m_PrefabInstance: {fileID: 1225331828}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &1225331830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225331829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f42cfce144f3d24eaf219152a39bc11, type: 3}
+  m_Script: {fileID: 11500000, guid: 4622628c6612ba04d9f6e2e54d985f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _limbGoalGO: {fileID: 667505167}
 --- !u!1001 &9124281080025494785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -616,7 +613,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9124281079084465144, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
       propertyPath: m_Name
-      value: LimbRoot
+      value: Leg1
       objectReference: {fileID: 0}
     - target: {fileID: 9124281079084465146, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
       propertyPath: _limbGoalGO
@@ -674,5 +671,24 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 8.21
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9124281079084465146, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
+--- !u!1 &9124281080025494786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9124281079084465144, guid: 98e325a03a8d55f40a340d00afed925c, type: 3}
+  m_PrefabInstance: {fileID: 9124281080025494785}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9124281080025494787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124281080025494786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4622628c6612ba04d9f6e2e54d985f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _limbGoalGO: {fileID: 1160390168}

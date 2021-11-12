@@ -1,24 +1,21 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Limb : MonoBehaviour {
+public class Leg : MonoBehaviour {
 
-    private Joint[] _joints;
-    private LimbGoal _limbGoal;
+    protected Joint[] _joints;
+    protected LimbGoal _limbGoal;
     [SerializeField] private GameObject _limbGoalGO;
-    private float _speed;
-    private float _angleLimit;
+    protected float _speed;
+    protected float _angleLimit;
 
 
     void Start() {
 
         // Initialize limb components
         _joints = GetComponentsInChildren<Joint>();
-        _limbGoal = _limbGoalGO.GetComponent<LimbGoal>();
-        //_limbGoal = GetComponentInChildren<LimbGoal>();
+        _limbGoal = GetComponentInChildren<LimbGoal>();
         _speed = 100f;
         _angleLimit = 90f;
 
@@ -31,6 +28,8 @@ public class Limb : MonoBehaviour {
         IKSolver();
     }
 
+
+    // THIS NEEDS TO BE EDITED TO BE THE LEG
     private void IKSolver() {
         for (int i = _joints.Length - 1; i >= 0; i--) {
 
@@ -47,21 +46,25 @@ public class Limb : MonoBehaviour {
             newRotation = Quaternion.RotateTowards(_joints[i].transform.rotation, newRotation, _speed * Time.deltaTime);
 
             // Limit rotation angle
-            if (i > 0) {
+            if (i > 0)
+            {
                 newRotation = limitedRotationAngle(newRotation, _joints[i - 1].transform.rotation, _angleLimit);
-            } else if (i == 0) { 
+            }
+            else if (i == 0)
+            {
                 newRotation = limitedRotationAngle(newRotation, this.transform.rotation, _angleLimit);
             }
 
             // Update joint rotation
-           _joints[i].transform.rotation = newRotation;
+            _joints[i].transform.rotation = newRotation;
 
             // Update joint positions
             fk();
         }
     }
 
-    private void fk() {
+
+    protected void fk() {
 
         // Update joint positions to be at the end of the previous segment
         for (int i = 0; i < _joints.Length - 1; i++) {
@@ -69,7 +72,7 @@ public class Limb : MonoBehaviour {
         }
     }
 
-    private Quaternion limitedRotationAngle(Quaternion rotation, Quaternion connectedJoint, float maxAngle) {
+    protected Quaternion limitedRotationAngle(Quaternion rotation, Quaternion connectedJoint, float maxAngle) {
 
         // Corrects rotation if greater than maximum angle
         if (Quaternion.Angle(rotation, connectedJoint) > maxAngle) {
@@ -79,7 +82,7 @@ public class Limb : MonoBehaviour {
         return rotation;
     }
 
-    public Vector3 GetLimbEndPosition(){
+     public Vector3 GetLimbEndPosition(){
         return _joints[_joints.Length-1].getEndPoint();
     }
 
