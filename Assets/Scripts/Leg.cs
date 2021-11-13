@@ -6,7 +6,7 @@ public class Leg : MonoBehaviour {
 
     protected Joint[] _joints;
     protected LimbGoal _limbGoal;
-     [SerializeField] private GameObject _limbGoalGO;
+    //[SerializeField] private GameObject _limbGoalGO;
     
     protected float _speed;
     protected float _angleLimit;
@@ -79,6 +79,11 @@ public class Leg : MonoBehaviour {
         return rotation;
     }
 
+    public LimbGoal getGoal() {
+        return _limbGoal;
+    }
+
+    /*
      public Vector3 GetLimbEndPosition(){
         return _joints[_joints.Length-1].getEndPoint();
     }
@@ -107,4 +112,6 @@ public class Leg : MonoBehaviour {
     public Vector3 GetLimbGoal(){
         return _limbGoalGO.transform.position;
     }
+    */
+    
 }

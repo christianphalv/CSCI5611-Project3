@@ -80,6 +80,10 @@ public class Arm : MonoBehaviour {
         return rotation;
     }
 
+    public LimbGoal getGoal() {
+        return _limbGoal;
+    }
+
     /*
      public Vector3 GetLimbEndPosition(){
         return _joints[_joints.Length-1].getEndPoint();
