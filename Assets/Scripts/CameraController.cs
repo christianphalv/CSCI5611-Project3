@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour {
     private Vector3 _distance;
 
     void Start() {
-        _distance = new Vector3(0f, 10f, -10f);
+        _distance = new Vector3(0f, 5f, -10f);
     }
 
     void Update() {

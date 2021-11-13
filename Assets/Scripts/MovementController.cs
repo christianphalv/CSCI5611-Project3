@@ -22,7 +22,7 @@ public class MovementController : MonoBehaviour {
 
         _currentLeg = 0;
         _currentArm = 0;
-        _movementSpeed = 10f;
+        _movementSpeed = 8f;
     }
 
     void Update() {
