@@ -17,7 +17,7 @@ public class Arm : MonoBehaviour {
         // Initialize limb components
         _joints = GetComponentsInChildren<Joint>();
         _limbGoal = GetComponentInChildren<LimbGoal>();
-        _speed = 100f;
+        _speed = 500f;
         _angleLimit = 90f;
 
         // Sort joints by order defined in editor

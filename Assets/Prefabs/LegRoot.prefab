@@ -174,7 +174,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bc946b9acdcb6704bb8fac12d8d9c3a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -228,10 +228,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8683104585961325563}
     m_Modifications:
+    - target: {fileID: 5856549657327843793, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc946b9acdcb6704bb8fac12d8d9c3a9, type: 2}
     - target: {fileID: 5856549657903469249, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
       propertyPath: _length
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5856549657903469251, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc946b9acdcb6704bb8fac12d8d9c3a9, type: 2}
     - target: {fileID: 5856549657903469254, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -294,10 +302,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8683104585961325563}
     m_Modifications:
+    - target: {fileID: 5856549657327843793, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 38957fb1d8cdff4498a8f94843b83227, type: 2}
     - target: {fileID: 5856549657903469249, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
       propertyPath: _orderNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5856549657903469251, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc946b9acdcb6704bb8fac12d8d9c3a9, type: 2}
     - target: {fileID: 5856549657903469254, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -360,6 +376,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8683104585961325563}
     m_Modifications:
+    - target: {fileID: 5856549657327843793, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc946b9acdcb6704bb8fac12d8d9c3a9, type: 2}
     - target: {fileID: 5856549657903469249, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
       propertyPath: _length
       value: 1
@@ -372,6 +392,10 @@ PrefabInstance:
       propertyPath: _orderNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5856549657903469251, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc946b9acdcb6704bb8fac12d8d9c3a9, type: 2}
     - target: {fileID: 5856549657903469254, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -434,10 +458,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8683104585961325563}
     m_Modifications:
+    - target: {fileID: 5856549657327843793, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc946b9acdcb6704bb8fac12d8d9c3a9, type: 2}
     - target: {fileID: 5856549657903469249, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
       propertyPath: _orderNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5856549657903469251, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc946b9acdcb6704bb8fac12d8d9c3a9, type: 2}
     - target: {fileID: 5856549657903469254, guid: dc787efd6cd2d9b46bba991cceac2c72, type: 3}
       propertyPath: m_RootOrder
       value: 3
